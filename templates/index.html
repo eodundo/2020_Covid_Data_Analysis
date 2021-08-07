@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Covid Data Analysis</title>
+</head>
+<body>
+	<h1>Covid Data Analysis</h1>
+	<h2>Select the Country</h2>
+	<form action="/" method="post">
+      <select id="country" name="country">
+        <option value="DEU">Germany</option>
+        <option selected value="FRA">France</option>
+        <option value="ITA">Italy</option>
+        <option value="ESP">Spain</option>
+        <option value="USA">USA</option>
+        <option value="CHN">China</option>
+        <option value="KOR">South Korea</option>
+        <option value="JPN">Japan</option>
+      </select>
+      <select id="country2" name="country2">
+        <option value="DEU">Germany</option>
+        <option value="FRA">France</option>
+        <option selected value="ITA">Italy</option>
+        <option value="ESP">Spain</option>
+        <option value="USA">USA</option>
+        <option value="CHN">China</option>
+        <option value="KOR">South Korea</option>
+        <option value="JPN">Japan</option>
+      </select>
+      <select id="country3" name="country3">
+        <option value="DEU">Germany</option>
+        <option value="FRA">France</option>
+        <option value="ITA">Italy</option>
+        <option value="ESP">Spain</option>
+        <option selected value="USA">USA</option>
+        <option value="CHN">China</option>
+        <option value="KOR">South Korea</option>
+        <option value="JPN">Japan</option>
+      </select>
+      <input type="submit" value="Submit"/>
+    </form>
+
+    <h1>Covid Cases</h1>
+
+     <div style="position: relative; height: 40vH; width: 80vw;">
+    	<canvas id="covidChart" width="400" height="400"></canvas>
+    </div>
+
+    <h1>Covid Deaths</h1>
+
+     <div style="position: relative; height: 40vH; width: 80vw;">
+    	<canvas id="deathChart" width="400" height="400"></canvas>
+    </div>
+
+    <h1>Covid Vaccines</h1>
+
+     <div style="position: relative; height: 40vH; width: 80vw;">
+    	<canvas id="vaccineChart" width="400" height="400"></canvas>
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+
+   
+    <script>
+    	var casesHTML = document.getElementById('covidChart').getContext('2d');
+    	var caseChart = new Chart(casesHTML, {
+    		type: 'line',
+    		data: {
+    			labels:[1,2,3,4,5],
+    			datasets: [{
+    				label: 'Label1',
+    				borderColor: 'rgb(230,80,150)',
+    				data:[2,1,3,1,5]
+    			}]
+    		},
+    			options: {
+    				maintainAspectRatio: false
+    			}
+    		
+    	});
+
+    	var deathsHTML = document.getElementById('deathChart').getContext('2d');
+    	var deathsChart = new Chart(deathsHTML, {
+    		type: 'bar',
+    		data: {
+    			labels:[1,2,3,4,5],
+    			datasets: [{
+    				label: 'Label1',
+    				borderColor: 'rgb(230,80,150)',
+    				data:[2,1,3,1,5]
+    			}, {
+    				label: 'Label2',
+    				borderColor: 'rgb(240,90,120)',
+    				data:[5,2,5,4,6]
+    			}]
+    		},
+    			options: {
+    				maintainAspectRatio: false
+    			}
+    		
+    	});
+    	var vaccineHTML = document.getElementById('vaccineChart').getContext('2d');
+    	var vaccineChart = new Chart(vaccineHTML, {
+    		type: 'line',
+    		data: {
+    			labels:[1,2,3,4,5],
+    			datasets: [{
+    				label: 'Label3',
+    				borderColor: 'rgb(230,80,150)',
+    				data:[2,1,3,1,5]
+    			}]
+    		},
+    			options: {
+    				maintainAspectRatio: false
+    			}
+    		});
+
+    </script>
+
+    	
+</body>
+</html>
