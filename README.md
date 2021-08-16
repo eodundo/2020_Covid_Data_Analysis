@@ -1,4 +1,4 @@
-# Covid_Data_Analysis_Project2
+# Covid-19 Data Analysis
 This is a descriptive analysis describing 2020 Covid data by graphically presenting statistics to show what happened.
 •	Data Source:  Ourworldindata.org/coronavirus &  data.europa.eu/data/datasets/covid-19-coronavirus-data
 •	Data Cleaning was done in Jupyter Notebook and basically involved dropping irrelevant columns that did not contribute to the visualization/interpretation of the data and filling the null columns.
