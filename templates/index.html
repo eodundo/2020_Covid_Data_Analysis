@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Covid Data Analysis</title>
-</head>
-<body>
-	<h1>Covid Data Analysis</h1>
-	<h2>Select the Country</h2>
-	<form action="/" method="post">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Covid Data Visualization Board</title>
+  </head>
+  <body>
+    <h1>2020 Covid Data Visualization</h1>
+    <h2>Select Country</h2>
+    <form action="/" method="post">
       <select id="country" name="country">
         <option value="DEU">Germany</option>
         <option selected value="FRA">France</option>
@@ -41,83 +41,82 @@
       <input type="submit" value="Submit"/>
     </form>
 
-    <h1>Covid Cases</h1>
-
-     <div style="position: relative; height: 40vH; width: 80vw;">
-    	<canvas id="covidChart" width="400" height="400"></canvas>
+    <h1>Covid Cases by Dates</h1>
+    <div style="position: relative; height: 40vh; width: 80vw">
+      <canvas id="caseChart" width="400" height="400"></canvas>
     </div>
 
-    <h1>Covid Deaths</h1>
-
-     <div style="position: relative; height: 40vH; width: 80vw;">
-    	<canvas id="deathChart" width="400" height="400"></canvas>
+    <h1>Covid Deaths by Dates</h1>
+    <div style="position: relative; height: 40vh; width: 80vw">
+      <canvas id="deathChart" width="400" height="400"></canvas>
     </div>
 
-    <h1>Covid Vaccines</h1>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
-     <div style="position: relative; height: 40vH; width: 80vw;">
-    	<canvas id="vaccineChart" width="400" height="400"></canvas>
-    </div>
-  
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
-
-   
     <script>
-    	var casesHTML = document.getElementById('covidChart').getContext('2d');
-    	var caseChart = new Chart(casesHTML, {
-    		type: 'line',
-    		data: {
-    			labels:[1,2,3,4,5],
-    			datasets: [{
-    				label: 'Label1',
-    				borderColor: 'rgb(230,80,150)',
-    				data:[2,1,3,1,5]
-    			}]
-    		},
-    			options: {
-    				maintainAspectRatio: false
-    			}
-    		
-    	});
+      var casesCountry1 = {{ casesCountry1|safe }}
+      var casesCountry2 = {{ casesCountry2|safe }}
+      var casesCountry3 = {{ casesCountry3|safe }}
+      var deathsCountry1 = {{ deathsCountry1|safe }}
+      var deathsCountry2 = {{ deathsCountry2|safe }}
+      var deathsCountry3 = {{ deathsCountry3|safe }}
+      var dateLabels = {{ dateLabels|safe }}
 
-    	var deathsHTML = document.getElementById('deathChart').getContext('2d');
-    	var deathsChart = new Chart(deathsHTML, {
-    		type: 'bar',
-    		data: {
-    			labels:[1,2,3,4,5],
-    			datasets: [{
-    				label: 'Label1',
-    				borderColor: 'rgb(230,80,150)',
-    				data:[2,1,3,1,5]
-    			}, {
-    				label: 'Label2',
-    				borderColor: 'rgb(240,90,120)',
-    				data:[5,2,5,4,6]
-    			}]
-    		},
-    			options: {
-    				maintainAspectRatio: false
-    			}
-    		
-    	});
-    	var vaccineHTML = document.getElementById('vaccineChart').getContext('2d');
-    	var vaccineChart = new Chart(vaccineHTML, {
-    		type: 'line',
-    		data: {
-    			labels:[1,2,3,4,5],
-    			datasets: [{
-    				label: 'Label3',
-    				borderColor: 'rgb(230,80,150)',
-    				data:[2,1,3,1,5]
-    			}]
-    		},
-    			options: {
-    				maintainAspectRatio: false
-    			}
-    		});
+      var caseHtml = document.getElementById('caseChart').getContext('2d');
+      var caseChart = new Chart(caseHtml, {
+        type: 'line',
+        data: {
+          labels: dateLabels,
+          datasets: [{
+            label: '{{ country1 }}',
+            borderColor: 'rgb(255,99,132)',
+            data: casesCountry1,
+            fill: false
+          }, {
+            label: '{{ country2 }}',
+            borderColor: 'rgb(139,139,0)',
+            data: casesCountry2,
+            fill: false
+          }, {
+            label: '{{ country3 }}',
+            borderColor: 'rgb(51,153,255)',
+            data: casesCountry3,
+            fill: false
+          }]
+        },
+        options: {
+            maintainAspectRatio: false
+        }
+      });
+
+      var deathHtml = document.getElementById('deathChart').getContext('2d');
+      var deathChart = new Chart(deathHtml, {
+        type: 'line',
+        data: {
+          labels: dateLabels,
+          datasets: [{
+            label: '{{ country1 }}',
+            borderColor: 'rgb(255,99,132)',
+            data: deathsCountry1,
+            fill: false
+          }, {
+            label: '{{ country2 }}',
+            borderColor: 'rgb(139,139,0)',
+            data: deathsCountry2,
+            fill: false
+          }, {
+            label: '{{ country3 }}',
+            borderColor: 'rgb(51,153,255)',
+            data: deathsCountry3,
+            fill: false
+          }]
+        },
+        options: {
+            maintainAspectRatio: false
+        }
+      });
 
     </script>
 
-    	
-</body>
+  </body>
 </html>
