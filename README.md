@@ -8,5 +8,3 @@ This is a descriptive analysis describing 2020 Covid data by graphically present
 o	Challenge experienced at this point: the flask app could not render the database and read the data. I kept getting an error. Eventually I picked a json file from the same website and used it for visualization.
 •	Chart.js (a JavaScript Library) was used to generate line graphs.
 •	 Interpreting data involves selecting three countries of your choice from the dropdown and the resulting chart will display a comparison of covid cases and covid deaths in selected countries between Jan-2020 to Dec-2020.
-•	
-![image](https://user-images.githubusercontent.com/79608073/129527482-fe98bf30-ffcb-4a1f-852c-25b95af9b4d5.png)
